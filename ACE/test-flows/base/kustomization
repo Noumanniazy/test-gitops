@@ -1,4 +1,0 @@
-# resources:
-#   - intserver_ocp.yaml
-resources:
-  - intserver_ocp.yaml
