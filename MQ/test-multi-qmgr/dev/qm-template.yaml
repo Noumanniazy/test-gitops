@@ -1,0 +1,92 @@
+---
+# Source: base/templates/qm-template.yaml
+apiVersion: mq.ibm.com/v1beta1
+kind: QueueManager
+metadata:
+  name: test-multi-qmgr
+  namespace: int
+  annotations:
+    argocd.argoproj.io/sync-wave: "300"
+    helm.sh/hook-weight: "300"
+spec:
+  license:
+    accept: true
+    
+    license: L-RJON-CD3JKX
+    
+    use: NonProduction
+  queueManager:
+    debug: false
+    livenessProbe:
+      failureThreshold: 1
+      initialDelaySeconds: 90
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 5
+    logFormat: Basic
+    metrics:
+      enabled: true
+    name: TESTQMGR
+    readinessProbe:
+      failureThreshold: 1
+      initialDelaySeconds: 10
+      periodSeconds: 5
+      successThreshold: 1
+      timeoutSeconds: 3
+    resources:
+      limits:
+        cpu: 400m
+        memory: 512M
+      requests:
+        cpu: 200m
+        memory: 256M
+    route:
+      enabled: true
+    
+    availability:
+      type: MultiInstance
+    
+    image: "407690150649.dkr.ecr.us-east-1.amazonaws.com/openshift-cicd-base-images:mq-9.3.0.10-r1"
+    imagePullPolicy: Always
+    storage:
+      defaultClass: ocs-storagecluster-cephfs
+      defaultDeleteClaim: true
+      persistedData:
+        class: ocs-storagecluster-cephfs
+        deleteClaim: true
+        enabled: true
+        size: 2Gi
+        type: persistent-claim
+      queueManager:
+        class: ocs-storagecluster-cephfs
+        deleteClaim: true
+        size: 2Gi
+        type: persistent-claim
+      recoveryLogs:
+        enabled: true
+    mqsc:
+    - configMap:
+        name: test-mqsc-configmap
+        items:
+        - default.mqsc
+        - config.mqsc
+  securityContext:
+    initVolumeAsRoot: false
+  template:
+    pod:
+      containers:
+      - name: qmgr
+        env:
+        - name: MQSNOAUT
+          value: "yes"
+      imagePullSecrets: 
+        - name: ecr-entitlement-key
+  terminationGracePeriodSeconds: 30
+  tracing:
+    agent: {}
+    collector: {}
+    enabled: false
+    namespace: ""
+  version: 9.3.0.10-r1
+  web:
+    enabled: true

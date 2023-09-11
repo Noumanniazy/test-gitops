@@ -1,0 +1,6 @@
+# CICD pipeline will add things
+resources:
+  - configmap.yaml
+  - qm-template.yaml
+commonAnnotations:
+  configuration/mqsc-version: 590a3c69fc2c857f6bd71b1df8104abaf5b22db6
