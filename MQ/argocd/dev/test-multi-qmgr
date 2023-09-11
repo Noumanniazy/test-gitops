@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: test-multi-queue-manager
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: int
+    server: https://kubernetes.default.svc
+  project: test
+  source:
+    path: MQ/test-multi-qmgr/dev/
+    repoURL: https://github.com/TapestryESB/test-gitops.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: true  
+      selfHeal: true
