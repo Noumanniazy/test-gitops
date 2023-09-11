@@ -1,0 +1,11 @@
+apiVersion: appconnect.ibm.com/v1beta1
+kind: IntegrationServer
+metadata:
+  name: test-flows
+  namespace: int
+spec:
+  license:
+    accept: true
+    license: L-LFMR-BTD75V
+    use: CloudPakForIntegrationNonProduction
+  version: 12.0.9.0-r1-lts

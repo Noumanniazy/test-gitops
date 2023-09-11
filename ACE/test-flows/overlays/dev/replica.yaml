@@ -1,0 +1,7 @@
+apiVersion: appconnect.ibm.com/v1beta1
+kind: IntegrationServer
+metadata:
+  name: test-flows
+  namespace: int
+spec:
+  replicas: 1

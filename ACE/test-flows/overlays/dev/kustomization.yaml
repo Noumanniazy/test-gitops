@@ -1,0 +1,18 @@
+bases:
+  - ../../base
+patches:
+  - path: image.yaml
+  - path: replica.yaml
+  - path: pod-resources.yaml
+  - path: config.yaml
+  - path: environment.yaml
+  - path: version.yaml
+  - patch: |-
+      - op: add
+        path: /spec/version
+        value: 12.0.9.0-r1-lts
+    target:
+      kind: Configuration
+resources:
+  - pol_mp_test.yaml
+  - server_conf_ocp.yaml

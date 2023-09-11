@@ -1,0 +1,9 @@
+apiVersion: appconnect.ibm.com/v1beta1
+kind: IntegrationServer
+metadata:
+  name: test-flows
+  namespace: int
+spec:
+  env:
+    - name: CONFIG_COMMIT_ID
+      value: "00c2ad049d76d364075c523fcd4e317a139e902b"
