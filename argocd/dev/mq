@@ -11,7 +11,7 @@ spec:
   project: test ## argo cd project
   source:
     path: MQ/argocd/dev/  ## path where it reads other argo manifists
-    repoURL: https://github.com/TapestryESB/test-gitops.git
+    repoURL: https://github.com/Usmanasim11/test-gitops.git
     targetRevision: main
   syncPolicy:
     automated:

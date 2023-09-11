@@ -11,7 +11,7 @@ spec:
   project: test
   source:
     path: MQ/test-multi-qmgr/dev/
-    repoURL: https://github.com/TapestryESB/test-gitops.git
+    repoURL: https://github.com/Usmanasim11/test-gitops.git
     targetRevision: main
   syncPolicy:
     automated:

@@ -12,7 +12,7 @@ spec:
   license:
     accept: true
     
-    license: L-RJON-CD3JKX
+    license: L-RJON-CD
     
     use: NonProduction
   queueManager:
@@ -46,7 +46,7 @@ spec:
     availability:
       type: MultiInstance
     
-    image: "407690150649.dkr.ecr.us-east-1.amazonaws.com/openshift-cicd-base-images:mq-9.3.0.10-r1"
+    image: 
     imagePullPolicy: Always
     storage:
       defaultClass: ocs-storagecluster-cephfs
