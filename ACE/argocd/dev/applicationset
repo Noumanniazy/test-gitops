@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: test-ace-applicationset
+  namespace: openshift-gitops
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/Usmanasim11/test-gitops.git
+        revision: HEAD
+        files:
+        - path: "ACE/**/overlays/**/dev_config.json"
+  template:
+    metadata:
+      name: '{{microservice}}'
+#       annotations:
+#         notifications.argoproj.io/subscribe.on-sync-succeeded.tapestry: mfarhan@tapestry.com;aahmad@tapestry.com;asiddiqa@tapestry.com
+    spec:
+      project: test
+      source:
+        repoURL: https://github.com/Usmanasim11/test-gitops.git
+        targetRevision: HEAD
+        path: "ACE/{{folder}}/overlays/dev/"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: int
+      syncPolicy:
+        automated:
+          prune: true  
+          selfHeal: true
