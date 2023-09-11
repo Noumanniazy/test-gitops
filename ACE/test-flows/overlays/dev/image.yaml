@@ -8,4 +8,4 @@ spec:
     containers:
       runtime:
         image: >-
-          407690150649.dkr.ecr.us-east-1.amazonaws.com/openshift-cicd:test-flows-d31228ed88b7a5880d20f629d1617968a08a91a2
+          407690149.dkr.ecr.us-east-1.amazonaws.com/openshift-cicd:test-flows-d31228ed88b7a5880d20f629d161
